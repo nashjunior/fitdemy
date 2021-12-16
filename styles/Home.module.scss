@@ -1,0 +1,134 @@
+.landing-page {
+  background: url(https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__9__9Wp7-gc-r.jpeg) no-repeat ;
+  background-size: cover;
+  height: 70vh;
+  z-index: 0;
+  width: 100vw;
+  
+  text-align: center;
+  align-items: center;
+  flex: 1;
+  color: whitesmoke;
+  overflow-wrap: break-word;
+}
+
+.expanded-landing-page {
+  height: 100vh;
+  transition: all 2s ease;
+}
+
+.title-exercise {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  padding: 11rem;
+  
+}
+
+.exercise-characteristics {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+   & > hr {
+    margin: 0 1.5rem;
+  }
+}
+
+.exercise-characteristic {
+  width: 10rem;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  justify-self: center;
+  margin: -16rem 20% 0 20%;
+  z-index: 1;
+}
+
+.rounded-button {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  background: none;
+  border: rgb(208, 208, 208);
+  padding: 0 2%;
+
+  
+}
+
+.expanded-button {
+  width: 10rem;
+  height: 10rem;
+  background: rgb(170, 242, 119);
+}
+
+.more-exercise-contents {
+  margin-top: 7vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 70vh);
+}
+
+.more-exercise-content {
+  height: calc((100vh - 70vh)/2);
+  padding-top: 4rem;
+  & > h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  & > p {
+    color: rgb(177, 177, 177);
+  }
+}
+
+.more-exercise-content + .more-exercise-content {
+  
+  border-top: 1px solid gainsboro;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100vw; /* Full width (cover the whole page) */
+  height: 100vh; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.65); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+
+  & > button {
+    margin-top: 6vh;
+    position: absolute;
+    right: calc(100vw - 95vw);
+    background: none;
+    border: none;
+    color: whitesmoke;
+    
+  }
+
+  & > a {
+    margin-top: 6vh;
+    position: absolute;
+    right: calc(100vw - 95vw);
+    background: none;
+    border: none;
+    color: whitesmoke;
+    text-decoration: none;
+  }
+  
+  & > h2 {
+    text-align: center;
+     font-size: 2.5rem;
+     margin-top: calc(100vh - 4vh - 50vh);
+     color:white;
+   }
+}
