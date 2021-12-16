@@ -1,0 +1,55 @@
+@keyframes openPage {
+  from {
+    margin-top: 100vh;
+
+  } to {
+    margin-top: 0%;
+
+  }
+}
+
+.activity-wrapper {
+  width: 100vw;
+  height: 100vh;
+  animation: openPage ease 3s forwards;
+}
+
+.video-player {
+  margin-top: 2rem;
+  width: 100vw;
+  overflow: none;
+}
+
+.exercise-list {
+  width: 100vw;
+  height: calc(100vh - 2rem);
+}
+
+.exercise {
+  width: 100vw;
+  height: 10rem;
+  text-align: center;
+  color: white;
+
+  
+  & > h3 {
+    top: 0;
+    z-index: 1;
+    font-size: 2rem;
+    margin-top: -8rem;
+  }
+}
+
+.image-exercise {
+    height: 10rem;
+    width: 100vw;
+    z-index: 0;
+    opacity: 0.65;
+}
+
+
+.progress {
+  background-color: gray;
+  height: 10rem;
+  transition: 1s ease;
+}
