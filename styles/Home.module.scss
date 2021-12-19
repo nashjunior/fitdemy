@@ -78,13 +78,38 @@
 .more-exercise-content {
   height: calc((100vh - 70vh)/2);
   padding-top: 4rem;
+  text-align: center;
+  align-items: center;
   & > h4 {
     font-size: 1.5rem;
     font-weight: 700;
   }
   
-  & > p {
+  p, ul {
     color: rgb(177, 177, 177);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+  }
+
+   li:nth-child(n+2):before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    font-weight: bold; /* If you want it to be bold */
+    
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -0.7em; /* Also needed for space (tweak if needed) */
+  }
+
+  li {
+    margin: 0 4px;
+
   }
 }
 
