@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "title": "Aulas coletivas",
+    "Training": [
+      {
+        "id": 1,
+        "title": "Exercício rápido de tronco",
+        "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__9__9Wp7-gc-r.jpeg",
+        "level": "Beginner",
+        "intensity": "Moderada",
+        "time": 10,
+        "free": true,
+        "equipments":[],
+        "advantages": ["Tronco", "Queima rápida de calorias"],
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, quod. Maiores accusantium excepturi esse quibusdam illum, beatae ullam quod pariatur eaque, quaerat quasi aliquid magni velit sed dolorum fuga omnis.",
+        "author": "joão lima",
+        "avatar": "https://ik.imagekit.io/bzw0ybymdr/default-image.jpg",
+        "exercises": [
+          {
+            "id": 1,
+            "title": "Exercício rápido de tronco",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__9__9Wp7-gc-r.jpeg",
+            "level": "Beginner",
+            "time": 10,
+            "videoUrl": "https://ik.imagekit.io/bzw0ybymdr/207_-_Mountain_climbers_CCGc0yhCf_V.mp4?updatedAt=1626880326140",
+            "next": 2
+          },
+          {
+            "id": 2,
+            "title": "Treino rápido e de alta intensidade para abdômen",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__8__wRfjkFaPJ-.jpeg",
+            "level": "Intermediate",
+            "time": 15,
+            "videoUrl": "https://ik.imagekit.io/bzw0ybymdr/177_-_step_up_alternado_DcRUsHVV7w.mp4",
+            "next": 3
+          },
+          {
+            "id": 3,
+            "title": "Encerramento com 5 minutos de prancha",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__7__k0cUyIOUt.jpeg",
+            "level": "Intermediate",
+            "time": 6,
+            "videoUrl": "https://ik.imagekit.io/bzw0ybymdr/159_-_Rotação_de_quadril_alternado_deitado_XgKFf_RMR.mp4?updatedAt=1626880375782",
+            "next": 4
+          },
+          
+          {
+            "id": 5,
+            "title": "Ponto de referência para começar",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__5__HRTbi10OTs.jpeg",
+            "level": "Beginner",
+            "time": 5,
+            "videoUrl": "https://vimeo.com/manage/videos/514344720",
+            "next": 6
+          },
+          {
+            "id": 6,
+            "title": "Circuito veloz para o tronco",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__4__mQltH26yqq.jpeg",
+            "level": "Beginner",
+            "time": 11,
+            "next": 7
+          },
+          {
+            "id": 7,
+            "title": "Bíceps e tríceps",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__3__TySlawx7zB.jpeg",
+            "level": "Intermediate",
+            "time": 13,
+            "next": 8
+          },
+          {
+            "id": 9,
+            "title": "Desaquecimento do atleta de corrida",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__1__9jhlVD1A9.jpeg",
+            "level": "Beginner",
+            "time": 9,
+            "next": 10
+          },
+          {
+            "id": 10,
+            "title": "Ponto de referência para emagrecer",
+            "img": "https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26_4D02tbwJT.jpeg",
+            "level": "intermediate",
+            "time": 6,
+            "next": 11
+          }
+        ]
+      }
+    ]
+  }
+]
