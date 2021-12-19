@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import GlobalStyles from '../styles/global';
+import AppProvider from '../contexts/index';
 
 // eslint-disable-next-line no-undef
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
@@ -18,7 +19,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
               content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
             />
           </Head>
-          <Component {...pageProps} />
+          <AppProvider>
+            <Component {...pageProps} />
+          </AppProvider>
           <GlobalStyles />
         </>
       )}
