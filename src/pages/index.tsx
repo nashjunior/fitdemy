@@ -3,9 +3,12 @@ import Link from 'next/link';
 import { FiSettings } from 'react-icons/fi';
 import { IoMdMusicalNotes } from 'react-icons/io';
 import styles from '../../styles/Home.module.scss';
+import useTraining from '../hooks/training';
 
 const Home: React.FC = () => {
   const [isStartedExercise, setIsStartedExercise] = useState(false);
+  const { loadTraining } = useTraining();
+  const trainingSelected = loadTraining(1);
 
   return (
     <>
@@ -22,25 +25,25 @@ const Home: React.FC = () => {
         {!isStartedExercise && (
           <>
             <h1 className={styles['title-exercise']}>
-              Exercício rápido de tronco
+              {trainingSelected?.title}
             </h1>
             <div className={styles['exercise-characteristics']}>
               <div className={styles['exercise-characteristic']}>
-                <h4>10</h4>
+                <h4>{trainingSelected?.time}</h4>
                 <p>Média em minutos</p>
               </div>
 
               <hr />
 
               <div>
-                <h4>Moderada</h4>
+                <h4>{trainingSelected?.level}</h4>
                 <p>Intensidade</p>
               </div>
 
               <hr />
 
               <div>
-                <h4>Iniciante</h4>
+                <h4>{trainingSelected?.level}</h4>
                 <p>Nível</p>
               </div>
             </div>
@@ -70,13 +73,24 @@ const Home: React.FC = () => {
           <div className={styles['more-exercise-contents']}>
             <div className={styles['more-exercise-content']}>
               <h4>Bom Para</h4>
-              <p>tronco</p>
-              <p>Queima rápida de calorias</p>
+              <ul>
+                {trainingSelected?.advantages.map((advantage) => (
+                  <li key={advantage}>{advantage}</li>
+                ))}
+              </ul>
             </div>
 
             <div className={styles['more-exercise-content']}>
               <h4>Equipamento</h4>
-              <p>nenhum</p>
+              {trainingSelected?.equipments.length === 0 ? (
+                <p>Nenhum</p>
+              ) : (
+                <ul>
+                  {trainingSelected?.equipments.map((equipment) => (
+                    <li key={equipment}>{equipment}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </>
