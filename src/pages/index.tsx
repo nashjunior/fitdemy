@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FiSettings } from 'react-icons/fi';
-import { IoMdMusicalNotes } from 'react-icons/io';
+import { IoIosVolumeOff, IoMdMusicalNotes } from 'react-icons/io';
 import styles from '../../styles/Home.module.scss';
 import useTraining from '../hooks/training';
 
 const Home: React.FC = () => {
   const [isStartedExercise, setIsStartedExercise] = useState(false);
-  const { loadTraining } = useTraining();
+  const { loadTraining, soundMuted, updateSoundStatus } = useTraining();
   const trainingSelected = loadTraining(1);
 
   return (
@@ -65,8 +65,16 @@ const Home: React.FC = () => {
               Iniciar
             </button>
 
-            <button className={styles['rounded-button']} type="button">
-              <IoMdMusicalNotes fill="white" size="70%" />
+            <button
+              className={styles['rounded-button']}
+              type="button"
+              onClick={() => updateSoundStatus(soundMuted)}
+            >
+              {soundMuted ? (
+                <IoIosVolumeOff fill="white" size="70%" />
+              ) : (
+                <IoMdMusicalNotes fill="white" size="70%" />
+              )}
             </button>
           </div>
 
