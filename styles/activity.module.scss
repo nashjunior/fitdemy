@@ -22,34 +22,34 @@
 
 .exercise-list {
   width: 100vw;
+  margin-top: 16px;
   height: calc(100vh - 2rem);
+  
 }
 
 .exercise {
-  width: 100vw;
   height: 10rem;
-  text-align: center;
-  color: white;
-
+  width: 100%;
+  text-align: left;
+  color: black;
   
   & > h3 {
-    top: 0;
-    z-index: 1;
-    font-size: 2rem;
-    margin-top: -8rem;
+    position: relative;
+    margin-top: -6rem;
   }
+  
 }
 
-.image-exercise {
-    height: 10rem;
-    width: 100vw;
-    z-index: 0;
-    opacity: 0.65;
-}
 
 
 .progress {
-  background-color: gray;
+  background: yellow;
   height: 10rem;
   transition: 1s ease;
+  z-index: 1;
+  display: inline-block;
+}
+
+.rest {
+  background: gray;
 }
