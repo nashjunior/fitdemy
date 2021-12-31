@@ -30,10 +30,11 @@ const Activity: React.FC = () => {
     <div className={styles['activity-wrapper']}>
       <video
         className={styles['video-player']}
+        controlsList="nodownload noplaybackrate"
         controls
         onDurationChange={(e) => {
           setVideolength(e.currentTarget.duration);
-          setRestTime(Math.floor(e.currentTarget.duration / 2));
+          setRestTime(currentExercise?.time as number);
         }}
         onTimeUpdate={(e) => {
           if (isRestTime) {
@@ -43,14 +44,14 @@ const Activity: React.FC = () => {
               (e.currentTarget.currentTime / videolength) * 100,
             );
         }}
-        onEnded={() => {
+        onEnded={(e) => {
           if (!isRestTime) {
+            setIsRestTime(true);
             setCurrentExercise(
               trainingSelected?.exercises.find(
                 (exercise) => currentExercise?.next === exercise.id,
               ),
             );
-            setIsRestTime(true);
           }
         }}
         ref={videoRef}
@@ -63,17 +64,20 @@ const Activity: React.FC = () => {
       <div className={styles['exercise-list']}>
         {trainingSelected?.exercises.map((exercise) => (
           <div className={styles.exercise} key={exercise.title}>
-            {currentExercise?.id === exercise.id ? (
-              <>
-                <div
-                  style={{ width: `${videoPercentage}%` }}
-                  className={`${styles.progress} ${isRestTime && styles.rest}`}
-                />
-                <h3>00:30 {exercise.title}</h3>
-              </>
-            ) : (
-              <h3>{exercise.title}</h3>
-            )}
+            <div
+              style={{
+                width: `${
+                  exercise.id === currentExercise?.id ? videoPercentage : 0
+                }%`,
+              }}
+              className={`${styles.progress} ${isRestTime && styles.rest}`}
+            />
+            <h3>
+              {Math.floor(exercise.time / 60)
+                .toString()
+                .padStart(2, '0')}
+              :{exercise.time.toString().padStart(2, '0')} {exercise.title}
+            </h3>
           </div>
         ))}
       </div>
