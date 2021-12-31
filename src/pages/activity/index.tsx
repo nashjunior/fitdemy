@@ -1,42 +1,81 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '../../../styles/activity.module.scss';
+import useTraining from '../../hooks/training';
 
 const Activity: React.FC = () => {
   const [videolength, setVideolength] = useState(0);
-  const [elapsedVideoTime, setElapsedVideoTime] = useState(0);
-  // const [videoPercentage, setVideoPercentage] = useState(0);
+  const [videoPercentage, setVideoPercentage] = useState(0);
 
-  const videoPercentage = (elapsedVideoTime / videolength) * 100 || 0;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const { loadTraining } = useTraining();
+  const trainingSelected = loadTraining(1);
+  const [currentExercise, setCurrentExercise] = useState(
+    trainingSelected?.exercises[0],
+  );
+  const [isRestTime, setIsRestTime] = useState(true);
+  const [restTime, setRestTime] = useState(0);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isRestTime && videoPercentage >= 100) {
+        setIsRestTime(false);
+        videoRef.current.currentTime = 0;
+        videoRef.current.load();
+      }
+    }
+  }, [isRestTime, videoPercentage]);
 
   return (
     <div className={styles['activity-wrapper']}>
       <video
         className={styles['video-player']}
         controls
-        onDurationChange={(e) => setVideolength(e.currentTarget.duration)}
-        onTimeUpdate={(e) => setElapsedVideoTime(e.currentTarget.currentTime)}
+        onDurationChange={(e) => {
+          setVideolength(e.currentTarget.duration);
+          setRestTime(Math.floor(e.currentTarget.duration / 2));
+        }}
+        onTimeUpdate={(e) => {
+          if (isRestTime) {
+            setVideoPercentage((e.currentTarget.currentTime / restTime) * 100);
+          } else
+            setVideoPercentage(
+              (e.currentTarget.currentTime / videolength) * 100,
+            );
+        }}
+        onEnded={() => {
+          if (!isRestTime) {
+            setCurrentExercise(
+              trainingSelected?.exercises.find(
+                (exercise) => currentExercise?.next === exercise.id,
+              ),
+            );
+            setIsRestTime(true);
+          }
+        }}
+        ref={videoRef}
         autoPlay
       >
-        <source src="https://ik.imagekit.io/bzw0ybymdr/207_-_Mountain_climbers_CCGc0yhCf_V.mp4?updatedAt=1626880326140" />
+        <source src={currentExercise?.videoUrl} />
         <track kind="captions" />
       </video>
 
       <div className={styles['exercise-list']}>
-        <div className={styles.exercise}>
-          <div
-            style={{ width: `${videoPercentage}%` }}
-            className={styles.progress}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={styles['image-exercise']}
-              src="https://ik.imagekit.io/bzw0ybymdr/S2pro/WhatsApp_Image_2021-06-08_at_11.54.26__9__9Wp7-gc-r.jpeg"
-              alt="Imagem"
-            />
+        {trainingSelected?.exercises.map((exercise) => (
+          <div className={styles.exercise} key={exercise.title}>
+            {currentExercise?.id === exercise.id ? (
+              <>
+                <div
+                  style={{ width: `${videoPercentage}%` }}
+                  className={`${styles.progress} ${isRestTime && styles.rest}`}
+                />
+                <h3>00:30 {exercise.title}</h3>
+              </>
+            ) : (
+              <h3>{exercise.title}</h3>
+            )}
           </div>
-
-          <h3>Prancha Alta</h3>
-        </div>
+        ))}
       </div>
     </div>
   );
